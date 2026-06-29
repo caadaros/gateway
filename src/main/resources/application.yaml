@@ -1,14 +1,12 @@
 server:
-  port: 8080
+  port: ${PORT:8080}
 
 spring:
   application:
     name: gateway
-
   cloud:
     gateway:
       routes:
-
         - id: agenda-service
           uri: lb://agenda
           predicates:
@@ -34,7 +32,6 @@ spring:
           predicates:
             - Path=/api/tipoServicio/**
 
-        ## Swagger routes
         - id: agenda-swagger
           uri: lb://agenda
           predicates:
@@ -54,7 +51,7 @@ spring:
           uri: lb://profesional
           predicates:
             - Path=/profesional/v3/api-docs
-            
+
         - id: tipo-servicio-swagger
           uri: lb://tipoServicio
           predicates:
@@ -63,9 +60,7 @@ spring:
 eureka:
   client:
     service-url:
-      defaultZone: http://localhost:8761/eureka/ #URL del servidor Eureka
-
-
+      defaultZone: ${EUREKA_URL:http://localhost:8761/eureka/}
   instance:
     prefer-ip-address: true
 
