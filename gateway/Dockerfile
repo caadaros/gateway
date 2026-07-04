@@ -20,7 +20,6 @@ WORKDIR /app
 RUN apk add --no-cache wget
 
 COPY --from=builder /app/target/*.jar app.jar
-COPY Wallet_* ./Wallet/
 
 EXPOSE ${PORT}
 
