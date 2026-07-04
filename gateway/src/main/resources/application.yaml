@@ -6,68 +6,66 @@ spring:
     name: gateway
   cloud:
     gateway:
-      routes:
-        - id: agenda-service
-          uri: lb://agenda
-          predicates:
-            - Path=/api/agenda/**
+      server:
+        webmvc:
+          routes:
+            - id: agenda-service
+              uri: lb://agenda
+              predicates:
+                - Path=/api/agenda/**
 
-        - id: disponibilidad-service
-          uri: lb://disponibilidadProfesional
-          predicates:
-            - Path=/api/disponibilidad/**
+            - id: disponibilidad-service
+              uri: lb://disponibilidadProfesional
+              predicates:
+                - Path=/api/disponibilidad/**
 
-        - id: cliente-service
-          uri: lb://cliente
-          predicates:
-            - Path=/api/cliente/**
+            - id: cliente-service
+              uri: lb://cliente
+              predicates:
+                - Path=/api/cliente/**
 
-        - id: profesional-service
-          uri: lb://profesional
-          predicates:
-            - Path=/api/profesional/**
+            - id: profesional-service
+              uri: lb://profesional
+              predicates:
+                - Path=/api/profesional/**
 
-        - id: tipo-servicio-service
-          uri: lb://tiposervicio
-          predicates:
-            - Path=/api/tiposervicio/**
+            - id: tipo-servicio-service
+              uri: lb://tipoServicio
+              predicates:
+                - Path=/api/tipoServicio/**
 
-        ## Swagger routes
-        - id: agenda-swagger
-          uri: lb://agenda
-          predicates:
-            - Path=/agenda/v3/api-docs
+            ## Swagger routes
+            - id: agenda-swagger
+              uri: lb://agenda
+              predicates:
+                - Path=/agenda/v3/api-docs
 
-        - id: cliente-swagger
-          uri: lb://cliente
-          predicates:
-            - Path=/cliente/v3/api-docs
+            - id: cliente-swagger
+              uri: lb://cliente
+              predicates:
+                - Path=/cliente/v3/api-docs
 
-        - id: disponibilidad-swagger
-          uri: lb://disponibilidadProfesional
-          predicates:
-            - Path=/disponibilidadProfesional/v3/api-docs
+            - id: disponibilidad-swagger
+              uri: lb://disponibilidadProfesional
+              predicates:
+                - Path=/disponibilidadProfesional/v3/api-docs
 
-        - id: profesional-swagger
-          uri: lb://profesional
-          predicates:
-            - Path=/profesional/v3/api-docs
+            - id: profesional-swagger
+              uri: lb://profesional
+              predicates:
+                - Path=/profesional/v3/api-docs
 
-        - id: tipo-servicio-swagger
-          uri: lb://tiposervicio
-          predicates:
-            - Path=/tiposervicio/v3/api-docs
+            - id: tipo-servicio-swagger
+              uri: lb://tipoServicio
+              predicates:
+                - Path=/tipoServicio/v3/api-docs
 
 eureka:
   client:
     service-url:
-      defaultZone: ${EUREKA_URL:https://eureka-hvy0.onrender.com/eureka/}
+      defaultZone: ${EUREKA_URL:http://localhost:8761/eureka/}
   instance:
-    prefer-ip-address: false
-    hostname: ${RENDER_EXTERNAL_HOSTNAME}
-    instance-id: ${spring.application.name}:${random.value}
-    lease-renewal-interval-in-seconds: 10
-    lease-expiration-duration-in-seconds: 30
+    prefer-ip-address: true
 
 management:
   endpoints:
