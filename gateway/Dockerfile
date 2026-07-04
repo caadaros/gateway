@@ -21,6 +21,6 @@ RUN apk add --no-cache wget
 
 COPY --from=builder /app/target/*.jar app.jar
 
-EXPOSE 8080
+EXPOSE ${PORT}
 
 ENTRYPOINT ["java", "-jar", "app.jar"]
