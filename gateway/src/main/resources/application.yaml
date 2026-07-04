@@ -28,9 +28,9 @@ spring:
             - Path=/api/profesional/**
 
         - id: tipo-servicio-service
-          uri: lb://tipoServicio
+          uri: lb://tiposervicio
           predicates:
-            - Path=/api/tipoServicio/**
+            - Path=/api/tiposervicio/**
 
         ## Swagger routes
         - id: agenda-swagger
@@ -54,9 +54,9 @@ spring:
             - Path=/profesional/v3/api-docs
 
         - id: tipo-servicio-swagger
-          uri: lb://tipoServicio
+          uri: lb://tiposervicio
           predicates:
-            - Path=/tipoServicio/v3/api-docs
+            - Path=/tiposervicio/v3/api-docs
 
 eureka:
   client:
